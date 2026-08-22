@@ -1,0 +1,13 @@
+torch
+torch-geometric
+numpy
+pandas
+pyarrow
+openai
+python-dotenv
+tenacity
+class-registry
+shortuuid
+tiktoken
+sentence-transformers
+requests
