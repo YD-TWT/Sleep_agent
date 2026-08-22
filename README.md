@@ -7,37 +7,41 @@ This code is for academic research on sleeper-agent / backdoor attacks in multi-
 ## Repository layout
 
 ```
-G_Designer_sleep_agent/
-├── GDesigner/                 # Core library (agents, graph, GNN, LLM, prompts)
-│   ├── agents/                # Normal / Sleep / decision agents and attacks
-│   ├── graph/                 # Multi-agent graph and message passing
-│   ├── gnn/                   # GCN topology learner
-│   ├── llm/                   # OpenAI-compatible LLM client
-│   ├── prompt/                # Role prompts (MMLU, MMLU-Pro, GSM8K)
-│   ├── metrics/               # Accuracy and system-quality scores
-│   ├── tools/                 # JSONL reader and code executor
-│   └── utils/                 # Paths, env loader, logging
-├── experiment/                # Entry scripts
-│   ├── run_sleep_agent_mmlu_1.py
-│   ├── run_sleep_agent_mmlu_pro_1.py
-│   ├── run_sleep_agent_gsm8k_1.py
-│   ├── run_sleep_agent_mmlu_fixed_topology.py
-│   ├── run_sleep_agent_mmlu_coverage_rewrite.py
-│   ├── run_sleep_agent_mmlu_top_k.py
-│   ├── run_sleep_agent_mmlu_wo_Dual.py
-│   ├── run_sleep_agent_mmlu_wo_rewritten.py
-│   ├── run_sleep_agent_mmlu_wo_Topology.py
-│   └── run_sleep_agent_mmlu_wo_trigger.py
-├── datasets/                  # Loaders and download scripts (blobs gitignored)
-├── template.env               # BASE_URL / API_KEY
-├── requirements.txt
+Sleep_agent/
+├── README.md
 ├── LICENSE
-└── README.md
+├── .gitignore
+└── G_Designer_sleep_agent/    # Run all commands from this directory
+    ├── GDesigner/             # Core library (agents, graph, GNN, LLM, prompts)
+    │   ├── agents/            # Normal / Sleep / decision agents and attacks
+    │   ├── graph/             # Multi-agent graph and message passing
+    │   ├── gnn/               # GCN topology learner
+    │   ├── llm/               # OpenAI-compatible LLM client
+    │   ├── prompt/            # Role prompts (MMLU, MMLU-Pro, GSM8K)
+    │   ├── metrics/           # Accuracy and system-quality scores
+    │   ├── tools/             # JSONL reader and code executor
+    │   └── utils/             # Paths, env loader, logging
+    ├── experiment/            # Entry scripts
+    │   ├── run_sleep_agent_mmlu_1.py
+    │   ├── run_sleep_agent_mmlu_pro_1.py
+    │   ├── run_sleep_agent_gsm8k_1.py
+    │   ├── run_sleep_agent_mmlu_fixed_topology.py
+    │   ├── run_sleep_agent_mmlu_coverage_rewrite.py
+    │   ├── run_sleep_agent_mmlu_top_k.py
+    │   ├── run_sleep_agent_mmlu_wo_Dual.py
+    │   ├── run_sleep_agent_mmlu_wo_rewritten.py
+    │   ├── run_sleep_agent_mmlu_wo_Topology.py
+    │   └── run_sleep_agent_mmlu_wo_trigger.py
+    ├── datasets/              # Loaders and download scripts (blobs gitignored)
+    ├── template.env           # BASE_URL / API_KEY
+    └── requirements.txt
 ```
 
-Run all commands from this directory:
+Clone the repo, then enter the package directory before running anything:
 
 ```bash
+git clone https://github.com/YD-TWT/Sleep_agent.git
+cd Sleep_agent/G_Designer_sleep_agent
 python -m pip install -r requirements.txt
 ```
 
