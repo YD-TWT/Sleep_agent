@@ -1,6 +1,8 @@
-# G-Designer Sleep Agent
+# Sleep Agent
 
-Insert Sleep Agents into G-Designer: train the topology, then run Clean and Attack.
+Code for reproducing **Sleep Agent Attacks on Dynamic-Topology Multi-Agent LLM Systems**.
+
+Insert Sleep Agents into G-Designer or DyLAN, then run Clean and Attack.
 
 This code is for academic research on sleeper-agent / backdoor attacks in multi-agent systems. Do not use it against systems you do not own or are not authorized to test.
 
@@ -11,43 +13,48 @@ Sleep_agent/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
-└── G_Designer_sleep_agent/    # Run all commands from this directory
-    ├── GDesigner/             # Core library (agents, graph, GNN, LLM, prompts)
-    │   ├── agents/            # Normal / Sleep / decision agents and attacks
-    │   ├── graph/             # Multi-agent graph and message passing
-    │   ├── gnn/               # GCN topology learner
-    │   ├── llm/               # OpenAI-compatible LLM client
-    │   ├── prompt/            # Role prompts (MMLU, MMLU-Pro, GSM8K)
-    │   ├── metrics/           # Accuracy and system-quality scores
-    │   ├── tools/             # JSONL reader and code executor
-    │   └── utils/             # Paths, env loader, logging
-    ├── experiment/            # Entry scripts
-    │   ├── run_sleep_agent_mmlu_1.py
-    │   ├── run_sleep_agent_mmlu_pro_1.py
-    │   ├── run_sleep_agent_gsm8k_1.py
-    │   ├── run_sleep_agent_mmlu_fixed_topology.py
-    │   ├── run_sleep_agent_mmlu_coverage_rewrite.py
-    │   ├── run_sleep_agent_mmlu_top_k.py
-    │   ├── run_sleep_agent_mmlu_wo_Dual.py
-    │   ├── run_sleep_agent_mmlu_wo_rewritten.py
-    │   ├── run_sleep_agent_mmlu_wo_Topology.py
-    │   └── run_sleep_agent_mmlu_wo_trigger.py
-    ├── datasets/              # Loaders and download scripts (blobs gitignored)
-    ├── template.env           # BASE_URL / API_KEY
+├── G_Designer_sleep_agent/    # G-Designer backbone; run commands from this directory
+│   ├── GDesigner/
+│   ├── experiment/
+│   │   ├── run_sleep_agent_mmlu_1.py
+│   │   ├── run_sleep_agent_mmlu_pro_1.py
+│   │   ├── run_sleep_agent_gsm8k_1.py
+│   │   ├── run_sleep_agent_mmlu_fixed_topology.py
+│   │   ├── run_sleep_agent_mmlu_coverage_rewrite.py
+│   │   ├── run_sleep_agent_mmlu_top_k.py
+│   │   ├── run_sleep_agent_mmlu_wo_Dual.py
+│   │   ├── run_sleep_agent_mmlu_wo_rewritten.py
+│   │   ├── run_sleep_agent_mmlu_wo_Topology.py
+│   │   └── run_sleep_agent_mmlu_wo_trigger.py
+│   ├── datasets/
+│   ├── template.env
+│   └── requirements.txt
+└── DyLAN_sleep_agent/         # DyLAN backbone; run commands from this directory
+    ├── code/MMLU/
+    ├── experiments/
+    │   ├── run_dylan_mmlu_online_sleep.py
+    │   ├── run_dylan_mmlu_pro_online_sleep.py
+    │   └── run_dylan_gsm8k_online_sleep.py
+    ├── data/
+    ├── template.env
     └── requirements.txt
 ```
 
-Clone the repo, then enter the package directory before running anything:
-
 ```bash
 git clone https://github.com/YD-TWT/Sleep_agent.git
-cd Sleep_agent/G_Designer_sleep_agent
+cd Sleep_agent
+```
+
+Each package has its own `requirements.txt` and `template.env`.
+
+## G-Designer
+
+```bash
+cd G_Designer_sleep_agent
 python -m pip install -r requirements.txt
 ```
 
 Edit `template.env` and set `BASE_URL` and `API_KEY`.
-
-Download benchmarks locally (files are gitignored; see `datasets/README.md`):
 
 ```bash
 python datasets/MMLU/download.py
@@ -70,6 +77,34 @@ python experiment/run_sleep_agent_mmlu_1.py \
     --sleep_out_bias 0.5 --threshold 0.5
 ```
 
+## DyLAN
+
+```bash
+cd DyLAN_sleep_agent
+python -m pip install -r requirements.txt
+```
+
+Edit `template.env` and set `BASE_URL` and `API_KEY`.
+
+```bash
+python data/download_mmlu.py
+python data/download_mmlu_pro.py
+python data/download_gsm8k.py
+```
+
+Main experiment (paired Clean / Attack):
+
+```bash
+python experiments/run_dylan_mmlu_online_sleep.py \
+    --result_dir result/dylan_mmlu_online_4N2S \
+    --llm_name deepseek-r1-local \
+    --api_base http://localhost:8000/v1 \
+    --test_size 200 --test_offset 0 \
+    --num_rounds 3 --num_sleep_agents 2 \
+    --batch_size 4 --phase both \
+    --seed 42 --fresh
+```
+
 ## Author
 
 Hongyu Yao (姚泓宇)  
@@ -77,7 +112,7 @@ Email: [2202504002@stu.ccut.edu.cn](mailto:2202504002@stu.ccut.edu.cn)
 
 ## Acknowledgement
 
-This repository extends [G-Designer](https://github.com/yanweiyue/GDesigner).
+This repository extends [G-Designer](https://github.com/yanweiyue/GDesigner) and [DyLAN](https://github.com/SALT-NLP/DyLAN).
 The original G-Designer codebase also acknowledges [GPTSwarm](https://github.com/metauto-ai/GPTSwarm).
 
 ## Citation
@@ -97,5 +132,18 @@ If you use the G-Designer topology learner, please cite:
   month     = {13--19 Jul},
   publisher = {PMLR},
   url       = {https://proceedings.mlr.press/v267/zhang25cu.html}
+}
+```
+
+If you use the DyLAN debate backbone, please cite:
+
+```bibtex
+@misc{liu2023dynamic,
+  title={Dynamic LLM-Agent Network: An LLM-Agent Collaboration Framework with Agent Team Optimization},
+  author={Liu, Zijun and Zhang, Yanzhe and Li, Peng and Liu, Yang and Yang, Diyi},
+  year={2023},
+  eprint={2310.02170},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL}
 }
 ```
