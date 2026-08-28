@@ -22,9 +22,8 @@ DyLAN_sleep_agent/
 ```
 
 ```bash
-git clone https://github.com/YD-TWT/DyLAN_sleep_agent.git
-cd DyLAN_sleep_agent
-python -m pip install -r requirements.txt
+git clone https://github.com/YD-TWT/Sleep_agent.git
+cd Sleep_agent/DyLAN_sleep_agent
 ```
 
 Edit `template.env` and set `BASE_URL` and `API_KEY`.
