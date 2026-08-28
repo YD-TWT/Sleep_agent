@@ -69,7 +69,7 @@ python experiment/run_sleep_agent_mmlu_1.py \
     --result_dir result/sleep_agent_mmlu \
     --llm_name deepseek-r1-local \
     --train_split dev --train_size 80 --train_offset 0 \
-    --test_split val --test_size 153 --test_offset 0 \
+    --test_split val --test_size 200 --test_offset 0 \
     --batch_size 4 --num_rounds 2 --num_iterations 20 --lr 0.1 \
     --decision_method FinalRefer \
     --num_normal_agents 4 --num_sleep_agents 2 \
