@@ -11,6 +11,7 @@ This code is for academic research on sleeper-agent / backdoor attacks in multi-
 ```
 Sleep_agent/
 ├── README.md
+├── Prompt.md
 ├── LICENSE
 ├── .gitignore
 ├── G_Designer_sleep_agent/    # G-Designer backbone; run commands from this directory
