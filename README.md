@@ -1,6 +1,6 @@
 # Sleep Agent
 
-Code for reproducing **Sleep Agent Attacks on Dynamic-Topology Multi-Agent LLM Systems**.
+Code for reproducing **Structural Vulnerabilities in Dynamic-Topology Multi-Agent LLM Systems**.
 
 Insert Sleep Agents into G-Designer or DyLAN, then run Clean and Attack.
 
@@ -42,7 +42,7 @@ Sleep_agent/
 ```
 
 ```bash
-git clone https://github.com/YD-TWT/Sleep_agent.git
+git clone <repository-url>
 cd Sleep_agent
 ```
 
@@ -106,10 +106,6 @@ python experiments/run_dylan_mmlu_online_sleep.py \
     --seed 42 --fresh
 ```
 
-## Author
-
-Hongyu Yao (姚泓宇)  
-Email: [2202504002@stu.ccut.edu.cn](mailto:2202504002@stu.ccut.edu.cn)
 
 ## Acknowledgement
 
