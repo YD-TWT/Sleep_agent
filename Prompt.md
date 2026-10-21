@@ -1,6 +1,6 @@
 # Prompts and Templates for Sleep Agent Attacks
 
-This document provides the complete prompt specifications and configuration templates used in the paper **"Sleep Agent Attacks on Dynamic-Topology Multi-Agent LLM Systems"**.
+This document provides the complete prompt specifications and configuration templates used in the paper **"Structural Vulnerabilities in Dynamic-Topology Multi-Agent LLM Systems"**.
 
 ---
 
