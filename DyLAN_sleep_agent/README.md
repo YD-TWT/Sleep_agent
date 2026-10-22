@@ -22,7 +22,7 @@ DyLAN_sleep_agent/
 ```
 
 ```bash
-git clone https://github.com/YD-TWT/Sleep_agent.git
+git clone <repository-url>
 cd Sleep_agent/DyLAN_sleep_agent
 ```
 
@@ -49,10 +49,6 @@ python experiments/run_dylan_mmlu_online_sleep.py \
     --seed 42 --fresh
 ```
 
-## Author
-
-Hongyu Yao (姚泓宇)  
-Email: [2202504002@stu.ccut.edu.cn](mailto:2202504002@stu.ccut.edu.cn)
 
 ## Acknowledgement
 
