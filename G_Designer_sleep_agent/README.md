@@ -66,10 +66,6 @@ python experiment/run_sleep_agent_mmlu_1.py \
     --sleep_out_bias 0.5 --threshold 0.5
 ```
 
-## Author
-
-Hongyu Yao (姚泓宇)  
-Email: [2202504002@stu.ccut.edu.cn](mailto:2202504002@stu.ccut.edu.cn)
 
 ## Acknowledgement
 
